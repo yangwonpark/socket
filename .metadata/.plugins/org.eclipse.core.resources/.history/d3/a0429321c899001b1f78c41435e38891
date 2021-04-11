@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.10.2.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+	<!-- MongoDB 관련 -->
+	<mongo:db-factory
+		id="mongoDbFactory"
+		mongo-ref="mongo"
+		dbname="admin"/>	
+		
+	<mongo:mongo-client 
+		id="mongo"
+		host="localhost"
+		port="27017"
+		credentials="park:dnjs1572@admin"/>
+	
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
+	</bean>		
+	
+	<bean id="dataSource" 
+		  class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		  destroy-method="close">
+		  
+		  <property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
+		  <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		  <property name="user" value="c##itbank" />
+		  <property name="password" value="it" />
+		  <property name="maxPoolSize" value="100" />
+		  <property name="maxIdleTime" value="600" />
+		  <property name="idleConnectionTestPeriod" value="300" />
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:config/mybatis-config.xml" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:config/sqlmap-**.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="gson" class="com.google.gson.Gson" />
+	
+	<bean id="sqlSessionTemplate"
+		  class="org.mybatis.spring.SqlSessionTemplate"
+		  destroy-method="clearCache">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="multipartResolver"
+		  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		  
+		  <property name="maxUploadSize" value="10485760" />
+		  <property name="maxInMemorySize" value="10485760" />
+		  <property name="defaultEncoding" value="utf-8" />
+	</bean>	
+		
+	<context:component-scan base-package="com.itbank.*"/>
+	<mybatis-spring:scan base-package="com.itbank.*"/>
+		
+</beans>

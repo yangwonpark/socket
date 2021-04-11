@@ -1,0 +1,14 @@
+package com.itbank.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class ChatController {
+	
+	public int insertChat() {
+		
+		int row = 0;
+		
+		return row;
+	}
+}

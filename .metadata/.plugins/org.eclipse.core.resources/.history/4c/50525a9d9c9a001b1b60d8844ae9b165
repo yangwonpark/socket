@@ -1,0 +1,11 @@
+package com.itbank.service;
+
+import java.util.HashMap;
+
+public class ChatService {
+
+	public int insertChat(HashMap<String, String> map) {
+		return 0;
+	}
+	
+}

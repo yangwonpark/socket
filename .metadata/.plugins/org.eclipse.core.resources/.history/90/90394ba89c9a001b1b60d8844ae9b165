@@ -1,0 +1,16 @@
+package com.itbank.service;
+
+import java.util.HashMap;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class ChatService {
+
+	@Autowired
+	private ChatDAO dao;
+	
+	public int insertChat(HashMap<String, String> map) {
+		return ;
+	}
+	
+}

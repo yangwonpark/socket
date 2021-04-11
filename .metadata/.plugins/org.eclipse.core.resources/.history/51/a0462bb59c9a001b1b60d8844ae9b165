@@ -1,0 +1,12 @@
+package com.itbank.dao;
+
+import java.util.HashMap;
+
+public class ChatDAO {
+
+	public int insertChat(HashMap<String, String> map) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

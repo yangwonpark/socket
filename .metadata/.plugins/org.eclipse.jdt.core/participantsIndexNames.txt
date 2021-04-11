@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+C:\Users\ailee\Desktop\final_socket\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2003851527.index
+\final_socket2\src\main\java
+C:\Users\ailee\Desktop\final_socket\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3140151185.index
+\final_socket\src\main\java

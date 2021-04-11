@@ -1,0 +1,64 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="cpath">${pageContext.request.contextPath }</c:set>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Websocket - final</title>
+</head>
+<style>
+	.chat-area {
+        border: 1px solid black;
+        width: 300px;
+       	overflow: auto;
+      	-ms-overflow-style: none; 
+        display: flex; */
+        flex-direction: column-reverse;
+    } 
+     .chat-area::-webkit-scrollbar {
+     	display: none; 
+    } 
+    .chat--left {
+        box-sizing: border-box;
+        width: 100%;
+        border: 1px solid red;
+        float: left;
+        text-align: left;
+        padding: 0px 0px 0px 10px;
+    }
+    .chat--right {
+        box-sizing: border-box;
+        width: 100%;
+        border: 1px solid blue;
+        float: left;
+        text-align: right;
+        padding: 0px 10px 0px 0px;
+    }
+</style>
+<script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.js"></script>
+</head>
+<body>
+	<h1>웹 소켓 연습 - final</h1>
+	<hr>
+	<c:if test = "${login == null }">
+		<a href="${cpath }/login" style="text-decoration: none; color: black;">로그인</a>
+	</c:if>	
+	<c:if test = "${login != null }">
+		<a href="${cpath }/logout" style="text-decoration: none; color: black;">로그아웃</a>
+		<c:if test="${login.userid == 'admin' }">
+		<a href="${cpath }/admin" style="text-decoration: none; color: black;">관리자</a>
+		</c:if>
+		<c:if test="${login.userid != 'admin' }">
+			<a href="${cpath }/client" style="text-decoration: none; color: black;">사용자</a>
+		</c:if>
+	</c:if>	
+
+	
+	

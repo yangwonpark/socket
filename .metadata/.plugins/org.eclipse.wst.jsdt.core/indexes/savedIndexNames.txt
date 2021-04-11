@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+C:\Users\ailee\Desktop\final_socket\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+376561624.index
+1887365873.index
+2003851527.index
+565076101.index
+1745281423.index
+310046155.index
+306450184.index
+562534909.index

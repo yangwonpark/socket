@@ -1,0 +1,16 @@
+package com.itbank.controller;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class ChatController {
+	
+	@PostMapping("value="mongo", )
+	public int insertChat() {
+		
+		int row = 0;
+		
+		return row;
+	}
+}
